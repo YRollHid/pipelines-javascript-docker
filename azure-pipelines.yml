@@ -8,20 +8,18 @@ variables:
   imageName: 'pipelines-javascript-docker'
 
 steps:
-- task: Docker@2
-  displayName: Build an image
-  inputs:
-    repository: $(imageName)
-    command: build
-    Dockerfile: app/Dockerfile
 
 - task: Docker@2
-  displayName: Push image
+  displayName: Login to Docker Hub
   inputs:
-    containerRegistry: |
-      $(dockerHub)
-    repository: $(imageName)
-    command: push
+    command: login
+    containerRegistry: dockerHub
+- task: Docker@2
+  displayName: Build and Push
+  inputs:
+    repository: yrollhid/azdo-updateimage
+    command: buildAndPush
+    Dockerfile: app/Dockerfile
     tags: |
-      test1
-      test2
+      tag1
+      tag2
