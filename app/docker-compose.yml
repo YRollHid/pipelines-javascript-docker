@@ -1,4 +1,6 @@
-version: "2.1"
+version: "3"
 services:
-  web:
-  image: yrollhid/azdo-updateimage:tag2
+  app-server:
+    image: yrollhid/azdo-updateimage:tag2
+    ports:
+      - 80:8080
