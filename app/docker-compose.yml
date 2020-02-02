@@ -1,0 +1,2 @@
+node-app:
+  image: yrollhid/azdo-updateimage:tag2
